@@ -11,7 +11,7 @@ interface Skill {
   isActive: boolean;
 }
 
-const BACKEND_URL = "http://localhost:8080";
+const BACKEND_URL = "https://portofolio-backend-production-9cb2.up.railway.app";
 const accentColors = ["#FFD700", "#FF6B9D", "#4A90FF", "#00D26A", "#FF6B35", "#9B59B6"];
 
 export default function SkillsPage() {

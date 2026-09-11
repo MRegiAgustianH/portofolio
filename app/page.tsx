@@ -21,7 +21,7 @@ interface Skill {
   proficiency: number;
 }
 
-const BACKEND_URL = "http://localhost:8080";
+const BACKEND_URL = "https://portofolio-backend-production-9cb2.up.railway.app";
 
 export default function Home() {
   const [projects, setProjects] = useState<Project[]>([]);

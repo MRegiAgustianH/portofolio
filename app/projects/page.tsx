@@ -14,7 +14,7 @@ interface Project {
   createdAt: string;
 }
 
-const BACKEND_URL = "http://localhost:8080";
+const BACKEND_URL = "https://portofolio-backend-production-9cb2.up.railway.app";
 const headerColors = ["#4A90FF", "#FF6B9D", "#00D26A", "#FFD700", "#FF6B35"];
 
 export default function ProjectsPage() {
