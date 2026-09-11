@@ -1,7 +1,9 @@
 // Ini kayak "Service" di Laravel yang handle HTTP requests ke API
 // Di Laravel biasanya ada app/Http/Client/ApiClient.php
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'; // URL Backend NestJS kita
+// TEMPORARY DEBUG - REPLACE WITH ENV VAR AFTER VERIFICATION
+const BACKEND_URL = 'https://portofolio-backend-production-9cb2.up.railway.app';
+// const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
 
 // Interface = tipe data TypeScript (seperti type hinting di Laravel)
 export interface Project {
