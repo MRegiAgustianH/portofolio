@@ -8,7 +8,7 @@ export default function AdminLoginPage() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const BACKEND_URL = "http://localhost:8080";
+  const BACKEND_URL = "https://portofolio-backend-production-9cb2.up.railway.app";
 
   // Check if already logged in
   useEffect(() => {
