@@ -21,7 +21,7 @@ export default function AdminSkillsPage() {
   const [form, setForm] = useState({ name: "", description: "", proficiency: 75, isActive: true });
 
   const router = useRouter();
-  const BACKEND_URL = "http://localhost:8080";
+  const BACKEND_URL = "https://portofolio-backend-production-9cb2.up.railway.app";
   const getToken = () => localStorage.getItem("adminToken");
 
   const fetchSkills = async () => {

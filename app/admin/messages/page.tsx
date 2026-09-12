@@ -20,7 +20,7 @@ export default function AdminMessagesPage() {
   const [selectedMessage, setSelectedMessage] = useState<Message | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const router = useRouter();
-  const BACKEND_URL = "http://localhost:8080";
+  const BACKEND_URL = "https://portofolio-backend-production-9cb2.up.railway.app";
 
   useEffect(() => {
     const t = localStorage.getItem("adminToken");
