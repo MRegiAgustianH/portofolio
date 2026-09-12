@@ -89,21 +89,30 @@ export default function AdminProjectsPage() {
     setUploadedImage(file);
     setIsUploading(true);
 
-    const formData = new FormData();
-    formData.append("file", file);
-
     try {
-      const res = await fetch(`${BACKEND_URL}/uploads`, {
-        method: "POST",
-        body: formData,
-      });
-      const data = await res.json();
-      if (data.success) {
-        setForm(prev => ({ ...prev, imageUrl: data.url }));
-      }
+      // Convert to base64
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        const base64 = event.target?.result as string;
+
+        const res = await fetch(`${BACKEND_URL}/uploads`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            image: base64,
+            filename: file.name,
+          }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          setForm(prev => ({ ...prev, imageUrl: data.url }));
+        }
+        setIsUploading(false);
+      };
+      reader.onerror = () => setIsUploading(false);
+      reader.readAsDataURL(file);
     } catch (err) {
       console.error("Upload failed:", err);
-    } finally {
       setIsUploading(false);
     }
   };
