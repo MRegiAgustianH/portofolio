@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -23,6 +26,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="min-h-full flex flex-col bg-[#FFF8E7] text-black">
@@ -64,15 +69,38 @@ export default function RootLayout({
               {/* Mobile menu button */}
               <div className="md:hidden flex items-center">
                 <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   className="text-black font-extrabold text-2xl bg-white border-[3px] border-black w-10 h-10 flex items-center justify-center"
                   style={{ boxShadow: "4px 4px 0 0 #000" }}
-                  aria-label="Menu"
+                  aria-label="Toggle Menu"
                 >
-                  ☰
+                  {isMobileMenuOpen ? "✕" : "☰"}
                 </button>
               </div>
             </div>
           </div>
+
+          {/* Mobile Navigation Dropdown */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden border-t-[4px] border-black bg-[#FFD700]">
+              <div className="px-4 py-4 space-y-3">
+                {["/", "/projects", "/skills", "/contact"].map((href, index) => {
+                  const labels = ["Home", "Projects", "Skills", "Contact"];
+                  return (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block text-black font-extrabold uppercase text-base tracking-wide bg-white border-[3px] border-black px-4 py-3 text-center hover:bg-[#FF6B9D] hover:text-white transition-all shadow-[4px_4px_0_0_#000]"
+                      style={{ boxShadow: "4px 4px 0 0 #000" }}
+                    >
+                      {labels[index]}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </nav>
 
         {/* Main Content Area */}
